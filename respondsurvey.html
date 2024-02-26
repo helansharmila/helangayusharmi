@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respond to Survey</title>
+</head>
+<body>
+    <h1>{{ survey.question }}</h1>
+    <form action="{{ url_for('respond_survey', survey_id=survey_id) }}" method="post">
+        {% for option in survey.options %}
+            <input type="radio" id="{{ option }}" name="option" value="{{ option }}">
+            <label for="{{ option }}">{{ option }}</label><br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

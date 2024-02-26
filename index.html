@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey App</title>
+</head>
+<body>
+    <h1>Surveys</h1>
+    <ul>
+        {% for survey in surveys %}
+            <li><a href="{{ url_for('respond_survey', survey_id=loop.index0) }}">{{ survey.question }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Create a Survey</h2>
+    <form action="{{ url_for('create_survey') }}" method="post">
+        <label for="question">Question:</label><br>
+        <input type="text" id="question" name="question" required><br>
+        <label for="options">Options (comma-separated):</label><br>
+        <input type="text" id="options" name="options" required><br>
+        <input type="submit" value="Create Survey">
+    </form>
+</body>
+</html>
